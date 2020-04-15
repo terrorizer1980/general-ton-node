@@ -22,7 +22,7 @@
 #OTHER DEALINGS IN THE SOFTWARE.
 
 #For more information, please refer to <https://unlicense.org>
-# (c) Mercurio and Viacheslav Akhmetov
+# (c) Mercuryo and Viacheslav Akhmetov
 
 LITECLIENT="lite-client"
 LITECLIENT_CONFIG="/var/ton-work/db/my-ton-global.config.json"

@@ -1,6 +1,14 @@
-# Telegram Open Network Private Testnet
+# Telegram Open Network Node Container
 Dockerfile for running general TON node (works for many testnet). Read more on [TCF Hackermd](https://hackmd.io/@tcf/ByJ0O7CDL).
 
+#### Build container
+```bash
+git clone https://github.com/TON-Community-Foundation/general-ton-node
+cd general-ton-node
+docker build -t username/general-ton-node:0.5.0 .
+```
+
+This will take some time to compile TON node. Alternatively, you may pull compilled container.
 #### Pull container
 ```docker pull kaemel/general-ton-node:0.5.0```
 #### Create volume
@@ -10,17 +18,17 @@ Note, you may need to change IP and used ports. If you don't need Liteserver, th
 
 TCF testnet:
 ```bash
-docker run -d --name tcfnet-node --network host -e "PUBLIC_IP=0.0.0.0" -e "CONFIG=https://raw.githubusercontent.com/TON-Community-Foundation/general-ton-node/master/tcf-testnet.config.json"" -e "CONSOLE_PORT=46731" -e "LITESERVER=true" -e "LITE_PORT=46732" -it kaemel/general-ton-node:0.5.0
+docker run -d --name tcfnet-node --mount source=ton-db,target=/var/ton-work/db --network host -e "PUBLIC_IP=0.0.0.0" -e "CONFIG=https://raw.githubusercontent.com/TON-Community-Foundation/general-ton-node/master/tcf-testnet.config.json"" -e "CONSOLE_PORT=46731" -e "LITESERVER=true" -e "LITE_PORT=46732" -it kaemel/general-ton-node:0.5.0
 ```
 
 Telegram testnet2:
 ```bash
-docker run -d --name rubynet-node --network host -e "PUBLIC_IP=0.0.0.0" -e "CONFIG=https://test.ton.org/ton-global.config.json" -e "CONSOLE_PORT=46731" -e "LITESERVER=true" -e "LITE_PORT=46732" -it kaemel/general-ton-node:0.5.0
+docker run -d --name rubynet-node --mount source=ton-db,target=/var/ton-work/db --network host -e "PUBLIC_IP=0.0.0.0" -e "CONFIG=https://test.ton.org/ton-global.config.json" -e "CONSOLE_PORT=46731" -e "LITESERVER=true" -e "LITE_PORT=46732" -it kaemel/general-ton-node:0.5.0
 ```
 
 Rubynet (by TonLabs):
 ```bash
-docker run -d --name rubynet-node --network host -e "PUBLIC_IP=0.0.0.0" -e "CONFIG=https://raw.githubusercontent.com/tonlabs/net.ton.dev/master/configs/ton-global.config.json" -e "CONSOLE_PORT=46731" -e "LITESERVER=true" -e "LITE_PORT=46732" -it kaemel/general-ton-node:0.5.0
+docker run -d --name rubynet-node --mount source=ton-db,target=/var/ton-work/db --network host -e "PUBLIC_IP=0.0.0.0" -e "CONFIG=https://raw.githubusercontent.com/tonlabs/net.ton.dev/master/configs/ton-global.config.json" -e "CONSOLE_PORT=46731" -e "LITESERVER=true" -e "LITE_PORT=46732" -it kaemel/general-ton-node:0.5.0
 ```
 #### Run validator
 Because TCF Testnet is working on the same code base as TON Testnet, to become validator you can use [Validator HOWTO](https://test.ton.org/Validator-HOWTO.txt).
