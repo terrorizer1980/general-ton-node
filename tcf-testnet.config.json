@@ -1,12 +1,12 @@
 {
   "liteservers": [
     {
-      "ip": -1303404396, 
+      "ip": 1294960484, 
       "id": {
         "@type": "pub.ed25519", 
-        "key": "1VfWJaA/r8BNqx81PSuTor+dhpAtWfGEoRD7cISS5co="
+        "key": "TlM6aUQ74WrJyyBRHdTlqSc2oVihj6MUDMJjFCxFf2c="
       }, 
-      "port": "16632"
+      "port": "7303"
     }
   ], 
   "dht": {
